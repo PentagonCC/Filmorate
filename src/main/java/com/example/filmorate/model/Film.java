@@ -1,4 +1,4 @@
-package com.example.filmorate.models;
+package com.example.filmorate.model;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
