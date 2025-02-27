@@ -6,6 +6,9 @@ import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Pattern;
 
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class User {
     private int id;
@@ -17,13 +20,23 @@ public class User {
     private String name;
     @PastOrPresent
     private LocalDate birthday;
+    private Set<Integer> friends;
 
-    public User(int id, String email, String login, String name, LocalDate birthday) {
+    public Set<Integer> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(Set<Integer> friends) {
+        this.friends = friends;
+    }
+
+    public User(int id, String email, String login, String name, LocalDate birthday, HashSet<Integer> friends) {
         this.id = id;
         this.email = email;
         this.login = login;
         this.name = name;
         this.birthday = birthday;
+        this.friends = friends;
     }
 
     public int getId() {

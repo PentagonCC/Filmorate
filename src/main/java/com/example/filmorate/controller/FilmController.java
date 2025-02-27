@@ -1,6 +1,7 @@
 package com.example.filmorate.controller;
 
 import com.example.filmorate.model.Film;
+import com.example.filmorate.service.FilmService;
 import com.example.filmorate.storage.FilmStorage;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -17,11 +18,13 @@ import java.util.List;
 public class FilmController {
 
     private final FilmStorage filmStorage;
+    private final FilmService filmService;
     public static final Logger log = LoggerFactory.getLogger(FilmController.class);
 
     @Autowired
-    public FilmController(FilmStorage filmStorage) {
+    public FilmController(FilmStorage filmStorage, FilmService filmService) {
         this.filmStorage = filmStorage;
+        this.filmService = filmService;
     }
 
     @PostMapping("/create")

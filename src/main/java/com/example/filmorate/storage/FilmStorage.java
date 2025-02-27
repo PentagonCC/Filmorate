@@ -12,4 +12,6 @@ public interface FilmStorage {
 
     List<Film> findAllFilms();
 
+    Film getFilmById(int id);
+
 }

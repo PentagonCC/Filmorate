@@ -5,6 +5,8 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Film {
     private int id;
@@ -15,13 +17,23 @@ public class Film {
     private LocalDate dateOfRealise;
     @Positive
     private int duration;
+    private Set<Integer> likes;
 
-    public Film(int id, int duration, LocalDate dateOfRealise, String description, String name) {
+    public Film(int id, int duration, LocalDate dateOfRealise, String description, String name, HashSet<Integer> likes) {
         this.id = id;
         this.duration = duration;
         this.dateOfRealise = dateOfRealise;
         this.description = description;
         this.name = name;
+        this.likes = likes;
+    }
+
+    public Set<Integer> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Set<Integer> likes) {
+        this.likes = likes;
     }
 
     public int getId() {

@@ -1,6 +1,7 @@
 package com.example.filmorate.controller;
 
 import com.example.filmorate.model.User;
+import com.example.filmorate.service.UserService;
 import com.example.filmorate.storage.UserStorage;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -16,12 +17,14 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController {
     private final UserStorage userStorage;
+    private final UserService userService;
 
     public static final Logger log = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    public UserController(UserStorage userStorage) {
+    public UserController(UserStorage userStorage, UserService userService) {
         this.userStorage = userStorage;
+        this.userService = userService;
     }
 
     @PostMapping("/create")
@@ -40,4 +43,6 @@ public class UserController {
     public List<User> findAllUser() {
         return userStorage.findAllUsers();
     }
+
+
 }

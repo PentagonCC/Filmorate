@@ -1,6 +1,8 @@
 package com.example.filmorate.storage;
 
+import com.example.filmorate.exception.NotFoundException;
 import com.example.filmorate.model.Film;
+import com.example.filmorate.model.User;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -30,5 +32,12 @@ public class InMemoryFilmStorage implements FilmStorage {
     @Override
     public List<Film> findAllFilms() {
         return new ArrayList<>(films.values());
+    }
+
+    @Override
+    public Film getFilmById(int id){
+        if (films.containsKey(id)) {
+            return films.get(id);
+        }else throw new NotFoundException("Film not found");
     }
 }

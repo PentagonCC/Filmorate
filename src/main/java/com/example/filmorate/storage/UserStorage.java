@@ -11,4 +11,7 @@ public interface UserStorage {
     User update(User user);
 
     List<User> findAllUsers();
+
+    User getUserById(int id);
+
 }
