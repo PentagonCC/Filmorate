@@ -36,9 +36,10 @@ public class FilmService {
         }
     }
 
-    public List<Film> getTopFilms() {
+    public List<Film> getTopFilms(int count) {
         return filmStorage.findAllFilms().stream().sorted((film1, film2) ->
-                film1.getLikes().size() - film2.getLikes().size()).limit(10).collect(Collectors.toList());
+                film2.getLikes().size() - film1.getLikes().size()).limit(count).collect(Collectors.toList());
     }
+
 
 }

@@ -22,13 +22,6 @@ public class User {
     private LocalDate birthday;
     private Set<Integer> friends;
 
-    public Set<Integer> getFriends() {
-        return friends;
-    }
-
-    public void setFriends(Set<Integer> friends) {
-        this.friends = friends;
-    }
 
     public User(int id, String email, String login, String name, LocalDate birthday, HashSet<Integer> friends) {
         this.id = id;
@@ -36,6 +29,14 @@ public class User {
         this.login = login;
         this.name = name;
         this.birthday = birthday;
+        this.friends = friends;
+    }
+
+    public Set<Integer> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(Set<Integer> friends) {
         this.friends = friends;
     }
 

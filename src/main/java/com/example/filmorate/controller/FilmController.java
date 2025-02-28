@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,5 +43,29 @@ public class FilmController {
     @GetMapping
     public List<Film> findAllFilms() {
         return filmStorage.findAllFilms();
+    }
+
+    @GetMapping("/{id}")
+    public Film getFilmByID(@PathVariable String id) {
+        log.info("GET / films / id / {}", id);
+        return filmStorage.getFilmById(Integer.parseInt(id));
+    }
+
+    @PutMapping("/{id}/like/{userId}")
+    public void likeFilm(@PathVariable String id, @PathVariable String userId) {
+        log.info("PUT / films / id / like / userId / {}", id);
+        filmService.likeFilm(Integer.parseInt(id), Integer.parseInt(userId));
+    }
+
+    @DeleteMapping("/{id}/like/{userId}")
+    public void deleteLike(@PathVariable String id, @PathVariable String userId) {
+        log.info("DELETE / films / id / like / userId / {}", id);
+        filmService.deleteLikeFilm(Integer.parseInt(id), Integer.parseInt(userId));
+    }
+
+    @GetMapping("/popular")
+    public List<Film> getTopFilms(@RequestParam(defaultValue = "10") String count){
+        log.info("GET / films / popular / {}");
+        return filmService.getTopFilms(Integer.parseInt(count));
     }
 }
